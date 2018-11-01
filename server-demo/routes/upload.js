@@ -1,3 +1,10 @@
+
+ /*
+    文件上传
+    1. 定义目录，创建目录
+    2. 定义storage, 设置upload  
+ */
+
 var express = require('express')
 var router = express.Router()
 var multer = require('multer')

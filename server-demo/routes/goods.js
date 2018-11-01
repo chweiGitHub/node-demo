@@ -1,10 +1,16 @@
+/*
+  商品列表的获取
+  1. mongodb的连接、监听
+  2. 列表数据的查询、筛选、排序
+*/
+
 var express = require('express');
 var router = express.Router();
 var mongoose  = require('mongoose');
 var Product = require('../models/product');
 
 // 连接数据库
-mongoose.connect('mongodb://192.168.1.163:27017/note');
+mongoose.connect('mongodb://192.168.1.166:27017/note');
 
 // 监听数据库的连接情况
 mongoose.connection.on('connected', ()=>{
@@ -55,6 +61,10 @@ router.get('/', function(req, res, next) {
   goodsModel.sort({'price': sort});
   // 带参数的查询可以用exec
   goodsModel.exec((err, doc)=> {
+    console.log('--------');
+    console.log(err);
+    console.log('=========');
+    console.log(doc);
     if(err){
       res.json({
         status: '1',
